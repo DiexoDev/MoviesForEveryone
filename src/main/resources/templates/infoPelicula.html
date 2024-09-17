@@ -1,0 +1,85 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:inline="text">DiexoMovies || [[${pelicula.titulo}]]</title>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+            rel="stylesheet"/>
+</head>
+<body>
+<!--Barra de navegación-->
+<nav id="menu" class="navbar container.fluid fixed-top p-2 position-relative">
+    <div class="logo">
+        <a href="#"><img th:src="@{/images/diexo_logo2.png}" alt="Logo"></a>
+    </div>
+    <div>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/cartelera">Cartelera</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/peliculas">Peliculas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/peliculas">Series</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-login">
+        <a class="nav-link" href="/admin">Ingresar</a>
+    </div>
+</nav>
+
+<div th:object="${pelicula}">
+    <div class="row">
+        <div class="col-md-6">
+            <img th:src="@{/assets/{filename}(filename=*{rutaPortada})}"
+                 th:alt="*{titulo}" class="img-fluid rounded w-100">
+        </div>
+        <div class="col-md-6">
+            <div class="text-end my-3">
+                <a
+                        th:href="@{https://www.youtube.com/watch?v={youtubeId}(youtubeId=*{linkTrailer})}"
+                        class="btn btn-danger" data-fancybox=""> <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+                    <path
+                            d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
+                </svg> Ver trailer
+                </a>
+            </div>
+            <h2 th:text="*{titulo}"></h2>
+            <div class="mb-3">
+					<span class="badge rounded-pull bg-light text-dark me-1"
+                          th:each="genero : *{generos}" th:text="${genero}"></span>
+                <p th:text="*{descripcion}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+<script
+        src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

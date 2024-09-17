@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Bebas Neue", sans-serif;
+}
+body {
+  background-color: #141414 !important;
+}
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.logo img{
+    width: 135px;
+    height: 65px;
+    border-radius: 35px;
+}
+.nav-link,
+.nav-login a {
+  font-size: 30px !important;
+  color: rgb(255, 255, 255);
+}
+.nav-login {
+  padding-right: 20px;
+  border: 2px solid #e50914;
+  background-color: #e50914;
+  border-radius: 25px;
+  font-weight: 400;
+  padding: 1px 15px;
+}
+.nav-login:hover, .nav-login:active{
+    background-color: #e50914a2;
+    border: 2px solid #e50914a2;
+}
+.nav-link:hover,
+.nav-link:active {
+  color: #e50914 !important;
+}
+.background-movies {
+  background: url(images/background_gold.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+}
+#popular-movies{
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    padding: 20px 0;
+    background-color: rgba(255, 0, 0, 0.356);
+}
+.carousel-item img {
+  width: 500px;
+  height: 590px;
+  margin: auto;
+}
+.carousel-inner {
+  margin-top: 50px;
+}
+.background img {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+.panel h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 12vh;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+.panel > h1 > span {
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #e50914;
+}
+.text-bg-dark{
+    margin: -10px 400px;
+}
+
+@media screen and (max-width:1200px) {
+    body{
+        padding: 30px;
+    }
+    .logo a{
+        font-size: 20px;
+    }
+    .nav-link,
+    .nav-login a {
+        font-size: 20px !important;
+        margin: 5px;
+    }
+    .panel h1 {
+        top: 29%;
+    }
+    .text-bg-dark{
+        display: none;
+    }
+
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DiexoMovies || Peliculas</title>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+            rel="stylesheet"/>
+</head>
+<body>
+<!--Barra de navegación-->
+<nav id="menu" class="navbar container.fluid fixed-top p-2 position-relative">
+    <div class="logo">
+        <a href="#"><img th:src="@{/images/diexo_logo2.png}" alt="Logo"></a>
+    </div>
+    <div>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/cartelera">Cartelera</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/peliculas">Peliculas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/peliculas">Series</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-login">
+        <a class="nav-link" href="/admin">Ingresar</a>
+    </div>
+</nav>
+<div class="bg-dark p-5 ">
+    <h1 class="display-1 text-light text-center">
+        <span id="diexo">Diexo</span> Movies<br/>¡Tus peliculas favoritas en un solo
+        lugar!</h1>
+    <h4 class="text-danger mt-5">Todas las películas</h4>
+</div>
+
+<div class="row">
+    <div class="row">
+        <div class="col-md-3 my-5" th:each="pelicula : ${peliculas}"
+             th:object="${pelicula}">
+            <a th:href="@{/pelicula/{id}(id=*{id})}" class="card shadow-lg"
+               style="text-decoration: none;"> <img
+                    th:src="@{/assets/{filename}(filename=*{rutaPortada})}"
+                    th:alt="*{titulo}" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title fs-6" th:text="*{titulo}"></h2>
+                    <p th:text="*{#temporals.format(fechaEstreno,'dd/MM/yyyy')}"
+                       class="text-muted small"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-5" th:with="page=${peliculas}">
+        <div class="col-sm-6">
+            <div sd:pagination-sumary></div>
+            <div class="col-sm-6">
+                <nav>
+                    <ul class="pagination" sd:pagination="full"></ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script
+        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+<script
+        src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
